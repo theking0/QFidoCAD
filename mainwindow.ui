@@ -74,6 +74,38 @@
             <height>0</height>
            </size>
           </property>
+          <property name="styleSheet">
+           <string notr="true">
+QTabWidget::tab-bar {
+    alignment: center;
+}
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 2px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #C2C7CB; /* same as pane color */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px; /* make non-selected tabs look smaller */
+}</string>
+          </property>
           <property name="currentIndex">
            <number>1</number>
           </property>
@@ -91,8 +123,8 @@
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="icon">
-            <iconset>
-             <normaloff>../../Downloads/class_libraries.ico</normaloff>../../Downloads/class_libraries.ico</iconset>
+            <iconset resource="resource.qrc">
+             <normaloff>:/icons/class_libraries.ico</normaloff>:/icons/class_libraries.ico</iconset>
            </attribute>
            <attribute name="title">
             <string>  Libraries</string>
@@ -100,8 +132,8 @@
           </widget>
           <widget class="QWidget" name="tab_2">
            <attribute name="icon">
-            <iconset>
-             <normaloff>../../Downloads/layers.ico</normaloff>../../Downloads/layers.ico</iconset>
+            <iconset resource="resource.qrc">
+             <normaloff>:/icons/layers.ico</normaloff>:/icons/layers.ico</iconset>
            </attribute>
            <attribute name="title">
             <string> Layers</string>
@@ -218,8 +250,37 @@ color: rgb(255, 255, 255);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar">
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
-border:1px solid black;</string>
+    <string notr="true">
+QStatusBar {
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+border:1px solid black;
+font: 75 10pt;
+	color: rgb(255, 255, 255);
+	font: 75 11pt &quot;Fixedsys&quot;;
+}
+
+
+QStatusBar QLabel {
+font: 75 10pt;
+	color: rgb(255, 255, 255);
+margin-left:10px;
+margin-right:10px;
+	font: 75 11pt &quot;Fixedsys&quot;;
+}
+
+QStatusBar QPushButton {
+	background-color: rgb(255, 255, 255);
+}
+
+QStatusBar QPushButton::checked {
+border:1px solid black;
+		background-color: rgb(170, 255, 255);
+}
+
+QStatusBar QPushButton::unchecked {
+background-color: rgb(255, 255, 255);
+}
+</string>
    </property>
   </widget>
   <widget class="QToolBar" name="toolBar">
@@ -265,8 +326,8 @@ border:1px solid black;</string>
   </widget>
   <action name="actionOpen">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/document_open.ico</normaloff>../../Downloads/document_open.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/document_open.ico</normaloff>:/icons/document_open.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Open</string>
@@ -277,8 +338,8 @@ border:1px solid black;</string>
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/save (4).ico</normaloff>../../Downloads/save (4).ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/save (4).ico</normaloff>:/icons/save (4).ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Save</string>
@@ -289,8 +350,8 @@ border:1px solid black;</string>
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/document_save_as.ico</normaloff>../../Downloads/document_save_as.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/document_save_as.ico</normaloff>:/icons/document_save_as.ico</iconset>
    </property>
    <property name="text">
     <string>Save &amp;As ...</string>
@@ -317,8 +378,8 @@ border:1px solid black;</string>
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/printer.ico</normaloff>../../Downloads/printer.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/printer.ico</normaloff>:/icons/printer.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;Print</string>
@@ -331,8 +392,8 @@ border:1px solid black;</string>
   </action>
   <action name="action_New">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/document_new.ico</normaloff>../../Downloads/document_new.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/document_new.ico</normaloff>:/icons/document_new.ico</iconset>
    </property>
    <property name="text">
     <string>&amp;New</string>
@@ -340,8 +401,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionGrid_Settings">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/grid.ico</normaloff>../../Downloads/grid.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/grid.ico</normaloff>:/icons/grid.ico</iconset>
    </property>
    <property name="text">
     <string>Grid Settings</string>
@@ -355,8 +416,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/line.png</normaloff>../../Desktop/icons32/line.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/line.png</normaloff>:/icons/line.png</iconset>
    </property>
    <property name="text">
     <string>Line</string>
@@ -370,8 +431,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/rectangle.png</normaloff>../../Desktop/icons32/rectangle.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/rectangle.png</normaloff>:/icons/rectangle.png</iconset>
    </property>
    <property name="text">
     <string>Rectangle</string>
@@ -385,8 +446,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/ellipse.png</normaloff>../../Desktop/icons32/ellipse.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/ellipse.png</normaloff>:/icons/ellipse.png</iconset>
    </property>
    <property name="text">
     <string>Ellipse</string>
@@ -400,8 +461,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/connection.png</normaloff>../../Desktop/icons32/connection.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/connection.png</normaloff>:/icons/connection.png</iconset>
    </property>
    <property name="text">
     <string>Connection</string>
@@ -415,8 +476,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/text.png</normaloff>../../Desktop/icons32/text.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/text.png</normaloff>:/icons/text.png</iconset>
    </property>
    <property name="text">
     <string>Text</string>
@@ -430,8 +491,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/bezier.png</normaloff>../../Desktop/icons32/bezier.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/bezier.png</normaloff>:/icons/bezier.png</iconset>
    </property>
    <property name="text">
     <string>Bézier</string>
@@ -445,8 +506,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/polygon.png</normaloff>../../Desktop/icons32/polygon.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/polygon.png</normaloff>:/icons/polygon.png</iconset>
    </property>
    <property name="text">
     <string>Polygon</string>
@@ -460,8 +521,8 @@ border:1px solid black;</string>
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/complexcurve.png</normaloff>../../Desktop/icons32/complexcurve.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/complexcurve.png</normaloff>:/icons/complexcurve.png</iconset>
    </property>
    <property name="text">
     <string>Curve</string>
@@ -474,9 +535,12 @@ border:1px solid black;</string>
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../Desktop/icons32/arrow.png</normaloff>../../Desktop/icons32/arrow.png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/arrow.png</normaloff>:/icons/arrow.png</iconset>
    </property>
    <property name="text">
     <string>Selection</string>
@@ -487,8 +551,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/ps_sirius_dog_black.ico</normaloff>../../Downloads/ps_sirius_dog_black.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/logo.ico</normaloff>:/icons/logo.ico</iconset>
    </property>
    <property name="text">
     <string>About QFidoCAD</string>
@@ -496,8 +560,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionOptions">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/settings1.ico</normaloff>../../Downloads/settings1.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/settings1.ico</normaloff>:/icons/settings1.ico</iconset>
    </property>
    <property name="text">
     <string>Options</string>
@@ -505,8 +569,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionUndo">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/undo.ico</normaloff>../../Downloads/undo.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/undo.ico</normaloff>:/icons/undo.ico</iconset>
    </property>
    <property name="text">
     <string>Undo</string>
@@ -514,8 +578,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionRedo">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/redo.ico</normaloff>../../Downloads/redo.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/redo.ico</normaloff>:/icons/redo.ico</iconset>
    </property>
    <property name="text">
     <string>Redo</string>
@@ -523,8 +587,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionCut">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/cut.ico</normaloff>../../Downloads/cut.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/cut.ico</normaloff>:/icons/cut.ico</iconset>
    </property>
    <property name="text">
     <string>Cut</string>
@@ -532,8 +596,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionCopy">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/copy.ico</normaloff>../../Downloads/copy.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/copy.ico</normaloff>:/icons/copy.ico</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -541,8 +605,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionPaste">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/gnome_edit_paste.ico</normaloff>../../Downloads/gnome_edit_paste.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/gnome_edit_paste.ico</normaloff>:/icons/gnome_edit_paste.ico</iconset>
    </property>
    <property name="text">
     <string>Paste</string>
@@ -550,8 +614,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionDelete">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/delete.ico</normaloff>../../Downloads/delete.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/delete.ico</normaloff>:/icons/delete.ico</iconset>
    </property>
    <property name="text">
     <string>Delete</string>
@@ -569,8 +633,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionRotate_Left">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/rotate_ccw.ico</normaloff>../../Downloads/rotate_ccw.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/rotate_ccw.ico</normaloff>:/icons/rotate_ccw.ico</iconset>
    </property>
    <property name="text">
     <string>Rotate Left</string>
@@ -578,8 +642,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionRotate_Rigth">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/rotate_cw.ico</normaloff>../../Downloads/rotate_cw.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/rotate_cw.ico</normaloff>:/icons/rotate_cw.ico</iconset>
    </property>
    <property name="text">
     <string>Rotate Right</string>
@@ -587,8 +651,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionAbout_Qt">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Pictures/download (2).png</normaloff>../../Pictures/download (2).png</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/download (2).png</normaloff>:/icons/download (2).png</iconset>
    </property>
    <property name="text">
     <string>About Qt</string>
@@ -596,8 +660,8 @@ border:1px solid black;</string>
   </action>
   <action name="actionHelp_online">
    <property name="icon">
-    <iconset>
-     <normaloff>../../Downloads/gnome_dialog_question.ico</normaloff>../../Downloads/gnome_dialog_question.ico</iconset>
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/gnome_dialog_question.ico</normaloff>:/icons/gnome_dialog_question.ico</iconset>
    </property>
    <property name="text">
     <string>Help online</string>
@@ -666,6 +730,8 @@ border:1px solid black;</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

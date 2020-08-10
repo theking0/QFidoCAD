@@ -28,9 +28,12 @@ FORMS += \
     dialog_grid_settings.ui \
     mainwindow.ui
 
-RC_ICONS = logo.ico
+RC_ICONS = icons/logo.ico
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+	resource.qrc

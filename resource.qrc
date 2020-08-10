@@ -1,0 +1,47 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/arrow.png</file>
+        <file>icons/bezier.png</file>
+        <file>icons/class_libraries.ico</file>
+        <file>icons/complexcurve.png</file>
+        <file>icons/connection.png</file>
+        <file>icons/copy.ico</file>
+        <file>icons/cut.ico</file>
+        <file>icons/delete.ico</file>
+        <file>icons/document_new.ico</file>
+        <file>icons/document_open.ico</file>
+        <file>icons/document_save_as.ico</file>
+        <file>icons/download (2).png</file>
+        <file>icons/ellipse.png</file>
+        <file>icons/filesaveas.ico</file>
+        <file>icons/folder_open.ico</file>
+        <file>icons/gnome_dialog_question.ico</file>
+        <file>icons/gnome_edit_paste.ico</file>
+        <file>icons/grid.ico</file>
+        <file>icons/layers.ico</file>
+        <file>icons/line.png</file>
+        <file>icons/logo.ico</file>
+        <file>icons/magnifier.png</file>
+        <file>icons/move.png</file>
+        <file>icons/new_file.ico</file>
+        <file>icons/pcbline.png</file>
+        <file>icons/pcbpad.png</file>
+        <file>icons/polygon.png</file>
+        <file>icons/printer.ico</file>
+        <file>icons/rectangle.png</file>
+        <file>icons/redo.ico</file>
+        <file>icons/redo_blue.ico</file>
+        <file>icons/rotate_ccw.ico</file>
+        <file>icons/rotate_cw.ico</file>
+        <file>icons/save (2).ico</file>
+        <file>icons/save (3).ico</file>
+        <file>icons/save (4).ico</file>
+        <file>icons/save.ico</file>
+        <file>icons/save_as (1).ico</file>
+        <file>icons/save_as.ico</file>
+        <file>icons/settings1.ico</file>
+        <file>icons/text.png</file>
+        <file>icons/undo.ico</file>
+        <file>icons/undo_blue.ico</file>
+    </qresource>
+</RCC>
