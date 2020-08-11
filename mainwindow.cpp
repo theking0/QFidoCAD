@@ -42,6 +42,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete scene;
+    delete view;
+    delete btnGrid;
+    delete subWindow1;
     delete ui;
 }
 
