@@ -153,13 +153,50 @@ QTabBar::tab:!selected {
      <x>0</x>
      <y>0</y>
      <width>984</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+    <string notr="true">
+
+
+QMenuBar {
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
 border:1px solid black;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+}
+
+QMenuBar::item {
+    padding:2px 8px;
+
+
+}
+
+QMenuBar::item:selected { /* when selected using mouse or keyboard */
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+border:1px solid black;
+}
+
+QMenuBar::item:pressed {
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+border:1px solid black;
+}
+
+* {
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+}
+
+QMenu{
+	background-color: qlineargradient(spread:reflect, x1:0.495, y1:0.505682, x2:0.494, y2:1, stop:0 rgba(128, 128, 128, 231), stop:1 rgba(199, 199, 199, 207));
+border:1px solid black;
+padding-left:6px;
+}
+
+QMenu::item:selected {
+	background-color: qlineargradient(spread:reflect, x1:0.48891, y1:0.523, x2:0.494, y2:1, stop:0 rgba(168, 143, 254, 220), stop:1 rgba(213, 255, 255, 184));
+border:1px solid black;
+}
+</string>
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
@@ -288,8 +325,19 @@ background-color: rgb(255, 255, 255);
     <string>toolBar</string>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
-</string>
+    <string notr="true">QToolBar {
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+}
+
+QToolBar QToolButton::hover {
+background-color: qlineargradient(spread:reflect, x1:0.494, y1:0.505455, x2:0.494, y2:1, stop:0 rgba(80, 80, 80, 200), stop:1 rgba(168, 168, 168, 200));
+border:1px solid black;
+}
+
+QToolBar QToolButton::checked {
+	background-color: qlineargradient(spread:reflect, x1:0.48891, y1:0.523, x2:0.494, y2:1, stop:0 rgba(168, 143, 254, 220), stop:1 rgba(213, 255, 255, 184));
+border:2px solid gray;
+}</string>
    </property>
    <property name="iconSize">
     <size>

@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     dialog_grid_settings.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    scene.cpp
 
 HEADERS += \
     dialog_grid_settings.h \
-    mainwindow.h
+    mainwindow.h \
+    scene.h
 
 FORMS += \
     dialog_grid_settings.ui \

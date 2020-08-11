@@ -17,6 +17,9 @@ public:
     explicit DialogGridSettings(QWidget *parent);
     ~DialogGridSettings();
 
+signals:
+    void gridChanged();
+
 private slots:
     void on_btnCancel_clicked();
 

@@ -35,8 +35,8 @@
    <string>Grid Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../Downloads/grid.ico</normaloff>../../Downloads/grid.ico</iconset>
+   <iconset resource="resource.qrc">
+    <normaloff>:/icons/grid.ico</normaloff>:/icons/grid.ico</iconset>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -129,6 +129,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

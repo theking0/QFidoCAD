@@ -13,9 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->mdiArea, &QMdiArea::subWindowActivated, this, &MainWindow::CheckMenuCmdEnable);
     connect(ui->toolBar, &QToolBar::actionTriggered, this, &MainWindow::on_action_toolBar);
 
+
     QLabel *lblZoom = new QLabel(ui->statusbar);
     QLabel *lblCoor = new QLabel(ui->statusbar);
-    QPushButton *btnGrid = new QPushButton(ui->statusbar);
+    btnGrid = new QPushButton(ui->statusbar);
     QWidget *si = new QWidget(ui->statusbar);
 
     lblZoom->setText("120 %");
@@ -24,6 +25,10 @@ MainWindow::MainWindow(QWidget *parent)
     lblZoom->setMinimumHeight(20);
 
     btnGrid->setCheckable(true);
+    btnGrid->setChecked(true);
+
+    connect(btnGrid, &QPushButton::toggled, this, &MainWindow::on_grid_on_off);
+
     QIcon icon(":/icons/grid.ico");
     btnGrid->setIcon(icon);
     btnGrid->setIconSize(QSize(16,16));
@@ -88,7 +93,7 @@ void MainWindow::on_actionOpen_triggered()
 void MainWindow::on_actionGrid_Settings_triggered()
 {
     DialogGridSettings *dl = new DialogGridSettings(this);
-
+    connect(dl, &DialogGridSettings::gridChanged, this, &MainWindow::on_grid_changed);
     dl->show();
 }
 
@@ -105,6 +110,14 @@ void MainWindow::on_action_New_triggered()
     subWindow1->setWindowIcon(QIcon(QPixmap(1,1)));
     subWindow1->setWindowTitle(QString("New Schematic %1 *").arg(ui->mdiArea->subWindowList().count()+1));
     subWindow1->showMaximized();
+    subWindow1->setMinimumSize(200,200);
+
+    scene = new Scene(subWindow1);
+    scene->enableGrid(gridIsActive);
+    view = new QGraphicsView(scene);
+
+    subWindow1->setWidget(view);
+
     ui->mdiArea->addSubWindow(subWindow1)->show();
 }
 
@@ -127,4 +140,28 @@ void MainWindow::on_action_toolBar(QAction *action)
             }
         }
     }
+}
+
+void MainWindow::on_grid_changed()
+{
+    QList<QMdiSubWindow *> lstWnds = ui->mdiArea->subWindowList();
+    QSettings s;
+    gridStep = s.value("grid_step").toInt();
+    gridColor = s.value("grid_color").value<QColor>();
+
+    for(int i = 0; i < lstWnds.count(); i++)
+    {
+        QGraphicsView *gv = (QGraphicsView *)lstWnds[i]->widget();
+        Scene *sc = (Scene *)gv->scene();
+
+        sc->setGrid(gridStep,gridColor);
+        sc->enableGrid(gridIsActive);
+        gv->update();
+    }
+}
+
+void MainWindow::on_grid_on_off(bool checked)
+{
+    gridIsActive = checked;
+    this->on_grid_changed();
 }

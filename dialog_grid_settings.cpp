@@ -28,6 +28,7 @@ void DialogGridSettings::on_btnOK_clicked()
     settings.setValue("grid_color", gridColor);
     settings.setValue("grid_step", ui->spinGridStep->value());
     settings.setValue("grid_style", ui->cbGridStyle->currentIndex());
+    emit gridChanged();
     this->close();
 }
 

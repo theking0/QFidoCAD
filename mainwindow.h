@@ -6,6 +6,10 @@
 #include <QMdiSubWindow>
 #include <QMessageBox>
 #include <QSettings>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsItem>
+#include "scene.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -41,9 +45,19 @@ private slots:
 
     void on_action_toolBar(QAction *action);
 
+    void on_grid_changed();
+
+    void on_grid_on_off(bool checked);
+
 private:
     Ui::MainWindow *ui;
     QSettings settings;
     QMdiSubWindow *subWindow1;
+    QGraphicsView *view;
+    Scene *scene;
+    bool gridIsActive;
+    int gridStep;
+    QColor gridColor;
+    QPushButton *btnGrid;
 };
 #endif // MAINWINDOW_H
