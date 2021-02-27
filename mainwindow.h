@@ -9,7 +9,11 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
+#include <QGraphicsScene>
+#include "graphicsview.h"
 #include "scene.h"
+#include "customrectitem.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +31,7 @@ private:
     void CheckMenuCmdEnable();
     void LoadSettings();
     void SaveSettings();
+    void ClearStatusLabels();
 
 private slots:
     void on_actionE_xit_triggered();
@@ -49,15 +54,20 @@ private slots:
 
     void on_grid_on_off(bool checked);
 
+    void updateStatusPos();
+
 private:
     Ui::MainWindow *ui;
     QSettings settings;
     QMdiSubWindow *subWindow1;
-    QGraphicsView *view;
+    GraphicsView *view;
     Scene *scene;
+    QScrollArea *sa;
     bool gridIsActive;
     int gridStep;
     QColor gridColor;
     QPushButton *btnGrid;
+    QLabel *lblZoom;
+    QLabel *lblCoor;
 };
 #endif // MAINWINDOW_H

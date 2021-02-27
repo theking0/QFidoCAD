@@ -3,24 +3,24 @@
 #include "dialog_grid_settings.h"
 #include <QLabel>
 #include <QPushButton>
-
+#include <QScrollArea>
+#include <QGraphicsEllipseItem>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->mdiArea, &QMdiArea::subWindowActivated, this, &MainWindow::CheckMenuCmdEnable);
+    //connect(ui->mdiArea, &QMdiArea::subWindowActivated, this, &MainWindow::CheckMenuCmdEnable);
     connect(ui->toolBar, &QToolBar::actionTriggered, this, &MainWindow::on_action_toolBar);
 
-
-    QLabel *lblZoom = new QLabel(ui->statusbar);
-    QLabel *lblCoor = new QLabel(ui->statusbar);
+    lblZoom = new QLabel(ui->statusbar);
+    lblCoor = new QLabel(ui->statusbar);
     btnGrid = new QPushButton(ui->statusbar);
+
     QWidget *si = new QWidget(ui->statusbar);
 
-    lblZoom->setText("120 %");
-    lblCoor->setText("X: 250, Y: 990");
+    ClearStatusLabels();
 
     lblZoom->setMinimumHeight(20);
 
@@ -38,24 +38,23 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusbar->addWidget(btnGrid,0);
     ui->statusbar->addWidget(lblZoom,0);
     ui->statusbar->addWidget(lblCoor,0);
+
+    ui->toolBar->setVisible(false);
+
 }
 
 MainWindow::~MainWindow()
 {
-    delete scene;
-    delete view;
-    delete btnGrid;
-    delete subWindow1;
     delete ui;
 }
 
 void MainWindow::CheckMenuCmdEnable()
 {
     bool enabled = false;
-
+/*
     if (ui->mdiArea->subWindowList().count() > 0 && ui->mdiArea->activeSubWindow())
         enabled = true;
-
+*/
     ui->action_Save->setEnabled(enabled);
     ui->actionSave_As->setEnabled(enabled);
     ui->action_Close->setEnabled(enabled);
@@ -73,20 +72,26 @@ void MainWindow::SaveSettings()
 
 }
 
+void MainWindow::ClearStatusLabels()
+{
+    lblZoom->setText("*** %");
+    lblCoor->setText("X: ***, Y: ***");
+}
+
 void MainWindow::on_actionE_xit_triggered()
 {
-    ui->mdiArea->closeAllSubWindows();
+  //  ui->mdiArea->closeAllSubWindows();
     this->close();
 }
 
 void MainWindow::on_action_Close_triggered()
 {
-    ui->mdiArea->closeActiveSubWindow();
+  //  ui->mdiArea->closeActiveSubWindow();
 }
 
 void MainWindow::on_actionC_lose_All_triggered()
 {
-    ui->mdiArea->closeAllSubWindows();
+   // ui->mdiArea->closeAllSubWindows();
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -105,9 +110,9 @@ void MainWindow::on_actionAbout_Qt_triggered()
 {
     QApplication::aboutQt();
 }
-
+#include <QGraphicsLineItem>
 void MainWindow::on_action_New_triggered()
-{
+{/*
     subWindow1 = new QMdiSubWindow(ui->mdiArea);
     subWindow1->setWidget(new QWidget);
     subWindow1->setAttribute(Qt::WA_DeleteOnClose);
@@ -116,13 +121,63 @@ void MainWindow::on_action_New_triggered()
     subWindow1->showMaximized();
     subWindow1->setMinimumSize(200,200);
 
-    scene = new Scene(subWindow1);
-    scene->enableGrid(gridIsActive);
-    view = new QGraphicsView(scene);
+    sa = new QScrollArea(subWindow1);
 
+    scene = new Scene();
+    view = new GraphicsView(scene);
+    sa->setMinimumSize(QSize(100,100));
+    //view->setMinimumSize(QSize(5000,5000));
+
+    gridIsActive = btnGrid->isChecked();
+    view->enableGrid(gridIsActive);
+
+    QGraphicsLineItem *li = new QGraphicsLineItem(0,0,300,300);
+    li->setPen(QPen(Qt::black, 3));
+    scene->addItem(li);
+    sa->setWidget(view);
     subWindow1->setWidget(view);
 
+
+   // QVBoxLayout *layout = new QVBoxLayout;
+    //layout->addWidget(view);
+    //subWindow1->setLayout(layout);
+
+    //subWindow1->layout()->addWidget(view);
+
     ui->mdiArea->addSubWindow(subWindow1)->show();
+    //view->show();
+    */
+    scene = new Scene();
+    view = new GraphicsView(scene);
+    sa = new QScrollArea(this);
+
+    connect(view, SIGNAL(mousePosChanged), this, SLOT(updateStatusPos));
+
+    gridIsActive = btnGrid->isChecked();
+    view->enableGrid(gridIsActive);
+/*
+    QGraphicsLineItem *li = new QGraphicsLineItem(0,0,200,200);
+    li->setPen(QPen(Qt::black, 2));
+    li->setFlags(QGraphicsItem::ItemIsMovable|QGraphicsItem::ItemIsSelectable);
+    scene->addItem(li);
+*/
+    CustomRectItem* rectItem1 = new CustomRectItem(QRect(0,0,80,80));
+    rectItem1->setPos(50,50);
+    rectItem1->setBrush(Qt::gray);
+    scene->addItem(rectItem1);
+
+    CustomRectItem* rectItem2 = new CustomRectItem(QRect(0,0,60,60));
+    rectItem2->setPos(160,60);
+    rectItem2->setBrush(Qt::magenta);
+    scene->addItem(rectItem2);
+scene->update();
+  //  connect(rectItem1, &CustomRectItem::ItemPositionHasChanged)
+
+
+    sa->setWidget(view);
+    ui->toolBar->setVisible(true);
+    int idx = ui->tabMain->addTab(view, "New schematic 1 *");
+    ui->tabMain->setCurrentIndex(idx);
 }
 
 void MainWindow::on_action_toolBar(QAction *action)
@@ -147,7 +202,7 @@ void MainWindow::on_action_toolBar(QAction *action)
 }
 
 void MainWindow::on_grid_changed()
-{
+{/*
     QList<QMdiSubWindow *> lstWnds = ui->mdiArea->subWindowList();
     QSettings s;
     gridStep = s.value("grid_step").toInt();
@@ -155,17 +210,23 @@ void MainWindow::on_grid_changed()
 
     for(int i = 0; i < lstWnds.count(); i++)
     {
-        QGraphicsView *gv = (QGraphicsView *)lstWnds[i]->widget();
-        Scene *sc = (Scene *)gv->scene();
+        QScrollArea *sa = (QScrollArea *)lstWnds[i]->widget();
+        GraphicsView *gv = (GraphicsView *)sa->widget();
 
-        sc->setGrid(gridStep,gridColor);
-        sc->enableGrid(gridIsActive);
-        gv->update();
-    }
+        gv->setGrid(gridStep,gridColor);
+        gv->enableGrid(gridIsActive);
+        gv->viewport()->update();
+    }*/
 }
 
 void MainWindow::on_grid_on_off(bool checked)
 {
     gridIsActive = checked;
     this->on_grid_changed();
+
+}
+
+void MainWindow::updateStatusPos()
+{
+    lblCoor->setText(QString("X: %1, Y: %2").arg(view->getMousePos().x(),view->getMousePos().y()));
 }

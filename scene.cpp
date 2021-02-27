@@ -21,7 +21,7 @@ void Scene::setGrid(int size, QColor clr)
 }
 
 void Scene::drawBackground(QPainter *painter, const QRectF &rect)
-{
+{/*
     if(enab)
     {
         QPen pen(gridColor);
@@ -36,5 +36,13 @@ void Scene::drawBackground(QPainter *painter, const QRectF &rect)
             }
         }
         painter->drawPoints(points.data(), points.size());
-    }
+    }*/
+
+
+
+
 }
+
+
+
+

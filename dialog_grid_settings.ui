@@ -10,19 +10,13 @@
     <x>0</x>
     <y>0</y>
     <width>187</width>
-    <height>131</height>
+    <height>121</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
     <width>187</width>
-    <height>131</height>
+    <height>121</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -42,6 +36,13 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="btnOK">
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="QSpinBox" name="spinGridStep">
      <property name="minimum">
@@ -55,23 +56,10 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="3" column="0">
+    <widget class="QPushButton" name="btnCancel">
      <property name="text">
-      <string>Grid style</string>
+      <string>Cancel</string>
      </property>
     </widget>
    </item>
@@ -89,41 +77,10 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QComboBox" name="cbGridStyle">
-     <property name="currentIndex">
-      <number>1</number>
-     </property>
-     <item>
-      <property name="text">
-       <string>LINES</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>DOTS</string>
-      </property>
-     </item>
-    </widget>
-   </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Grid step</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QPushButton" name="btnOK">
-     <property name="text">
-      <string>OK</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QPushButton" name="btnCancel">
-     <property name="text">
-      <string>Cancel</string>
      </property>
     </widget>
    </item>

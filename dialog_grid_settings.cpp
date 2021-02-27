@@ -10,7 +10,6 @@ DialogGridSettings::DialogGridSettings(QWidget *parent) :
 
     setBtnColorBg(settings.value("grid_color").value<QColor>());
     ui->spinGridStep->setValue(settings.value("grid_step").toInt());
-    ui->cbGridStyle->setCurrentIndex(settings.value("grid_style").toInt());
 }
 
 DialogGridSettings::~DialogGridSettings()
@@ -27,7 +26,6 @@ void DialogGridSettings::on_btnOK_clicked()
 {
     settings.setValue("grid_color", gridColor);
     settings.setValue("grid_step", ui->spinGridStep->value());
-    settings.setValue("grid_style", ui->cbGridStyle->currentIndex());
     emit gridChanged();
     this->close();
 }
